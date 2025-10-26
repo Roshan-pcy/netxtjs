@@ -7,7 +7,7 @@ type Props={
     className?:string;
 }
 
-export default function card2( {children,width="w-[400px]" , className , hight="w-[500px]"}:Props) {
+export default function card2( {children,width="w-[400px]" , className , hight="h-[500px]"}:Props) {
   return (
     <div className={`${className} bg-pink-50 ${hight} ${width}`}>{children}</div>
   )
