@@ -8,9 +8,9 @@ import Page from "@/componets/page";
 export default function Home() {
   return (
     <div className="justify-center items-center h-screen">
-      <ProfileCard />
-      {/* <Input /> */}
-      <Page />
+      {/* <ProfileCard /> */}
+      <Input />
+      {/* <Page /> */}
     </div>
   );
 }
