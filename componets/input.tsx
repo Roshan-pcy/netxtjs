@@ -78,7 +78,7 @@ export default function Input() {
     if (value && inputRef.current) {
       inputRef.current.value = value;
       setEditKey(key);
-      setData(value);
+      setData(value); 
     }
   };
 
@@ -124,7 +124,7 @@ export default function Input() {
               <span>
                 <strong>{item.key}</strong>: {item.value}
               </span>
-
+ 
               <div className="space-x-2">
                 <button
                   onClick={() => editOne(item.key)}
