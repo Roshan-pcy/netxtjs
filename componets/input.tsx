@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import localforage from "localforage";
+import { Button } from "@/components/ui/button";
 
 export default function Input() {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -78,7 +79,7 @@ export default function Input() {
     if (value && inputRef.current) {
       inputRef.current.value = value;
       setEditKey(key);
-      setData(value); 
+      setData(value);
     }
   };
 
@@ -95,12 +96,7 @@ export default function Input() {
         className="w-64 h-10 bg-amber-50 m-2 pl-4 border rounded-md"
       />
 
-      <button
-        onClick={handleSave}
-        className="bg-amber-400 px-4 py-2 rounded-md text-white shadow-md"
-      >
-        {editKey ? "Update" : "Save"}
-      </button>
+      <Button onClick={handleSave}>{editKey ? "Update" : "Save"}</Button>
 
       {editKey && (
         <span className="ml-3 text-blue-600 font-semibold">
@@ -124,7 +120,7 @@ export default function Input() {
               <span>
                 <strong>{item.key}</strong>: {item.value}
               </span>
- 
+
               <div className="space-x-2">
                 <button
                   onClick={() => editOne(item.key)}
