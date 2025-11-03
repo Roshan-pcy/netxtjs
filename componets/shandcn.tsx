@@ -1,33 +1,47 @@
-"use client"; // <-- THIS MUST BE THE VERY FIRST LINE
+"use client";
 
 import { useState, useRef } from "react";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import type { CheckedState } from "@radix-ui/react-checkbox";
 
 export function InputDemo() {
   const [email, setEmail] = useState("");
+  const [checked, setChecked] = useState<CheckedState>(false); // ✅ Typed for Checkbox
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  function handSumbit() {
+  function handleSubmit() {
+    // Validate checkbox
+    if (checked !== true) {
+      alert("⚠️ You must accept the terms to continue!");
+      return;
+    }
+
+    // Read email value
     if (inputRef.current) {
-      alert("Email: " + inputRef.current.value);
-      setEmail(inputRef.current.value); // update state only on submit
+      const value = inputRef.current.value;
+      setEmail(value);
+      alert(`✅ Submitted Email: ${value}`);
     }
   }
 
   return (
-    <div className="space-y-2 w-80 flex flex-col gap-2 m-2.5">
+    <div className="space-y-4 w-80 flex flex-col m-2.5">
       <p>Input data: {email}</p>
-      <Input
-        type="email"
-        placeholder="Email"
-        ref={inputRef} // uncontrolled, no value/onChange
-      />
-      <button
-        className="px-4 py-2 bg-blue-500 text-white rounded"
-        onClick={handSumbit}
-      >
-        Submit
-      </button>
+
+      {/* Email Input */}
+      <Input type="email" placeholder="Enter your email" ref={inputRef} />
+
+      {/* Checkbox with label */}
+      <div className="flex items-center gap-2">
+        <Checkbox checked={checked} onCheckedChange={setChecked} id="terms" />
+        <Label htmlFor="terms">I accept the terms & conditions</Label>
+      </div>
+
+      {/* Submit Button */}
+      <Button onClick={handleSubmit}>Submit</Button>
     </div>
   );
 }
