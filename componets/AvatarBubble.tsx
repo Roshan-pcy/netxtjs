@@ -10,12 +10,13 @@ interface AvatarBubbleProps {
 }
 
 export default function AvatarBubble({
-  avatarSrc = "/avator.png",
+  avatarSrc = "/avator2.png",
   title,
   subtitle,
 }: AvatarBubbleProps) {
   return (
     <div className="flex items-start gap-4">
+      {/* Avatar */}
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -28,8 +29,16 @@ export default function AvatarBubble({
         </div>
       </motion.div>
 
-      <div className="max-w-xl">
-        <div className="bg-[#2b2940] text-white/90 rounded-xl px-5 py-3 shadow-md border border-white/5">
+      {/* Chat Bubble */}
+      <div className="max-w-xl relative">
+        <div className="bg-[#2b2940] text-white/90 rounded-2xl px-5 py-3 shadow-md border border-white/5 relative">
+          {/* Chat Tail */}
+          <div
+            className="absolute left-[-8px] top-4 w-0 h-0
+                       border-t-[10px] border-t-transparent
+                       border-r-[10px] border-r-[#2b2940]
+                       border-b-[10px] border-b-transparent"
+          />
           <h3 className="font-semibold text-lg leading-snug">{title}</h3>
           {subtitle && <p className="text-sm text-white/60 mt-1">{subtitle}</p>}
         </div>

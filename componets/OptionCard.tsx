@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 
 interface OptionCardProps {
@@ -19,27 +18,19 @@ export default function OptionCard({
 }: OptionCardProps) {
   return (
     <motion.button
-      whileHover={{ y: -3 }}
-      transition={{ type: "spring", stiffness: 250, damping: 20 }}
+      whileTap={{ scale: 0.98 }}
       onClick={() => onToggle(id)}
-      className={`flex w-full items-center justify-between rounded-xl px-4 py-3 border shadow-sm transition
-        ${
-          checked
-            ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
-            : "bg-[#191623] hover:bg-[#22202b] text-white/90 border-white/5"
-        }`}
+      className={`flex w-full items-center justify-between rounded-xl px-4 py-3 border shadow-sm transition backdrop-blur-xl ${
+        checked
+          ? "bg-gradient-to-r from-blue-500/30 to-purple-500/30 text-white border-white/20 shadow-[0_8px_32px_0_rgba(99,102,241,0.2)]"
+          : "bg-white/5 hover:bg-white/10 text-white/90 border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)]"
+      }`}
     >
       <div className="flex items-center gap-3">
-        {icon && <span className="text-2xl">{icon}</span>}
-        <span>{label}</span>
+        {icon && <span className="text-xl">{icon}</span>}
+        <span className="font-medium">{label}</span>
       </div>
-      <div
-        className={`w-6 h-6 rounded-md flex items-center justify-center border ${
-          checked ? "bg-white/90 text-black" : "border-white/10"
-        }`}
-      >
-        {checked ? "✓" : ""}
-      </div>
+      <span className="text-sm font-bold">{checked ? "✓" : ""}</span>
     </motion.button>
   );
 }
