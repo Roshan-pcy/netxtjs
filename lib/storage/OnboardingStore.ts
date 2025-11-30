@@ -58,7 +58,7 @@ class OnBoardingStore {
     },
     {
       id: 7,
-      question: "Which time do you prefer to study English?",
+      question: "Which time do you prefer to study English ?",
       options: ["Morning", "Evening", "Night"],
     },
   ];
@@ -72,7 +72,7 @@ class OnBoardingStore {
   // Reset answers
   clear() {
     this.answers = [];
-    console.log("Cleared answers");
+    console.log("Cleared");
   }
 
   // Save to localStorage
