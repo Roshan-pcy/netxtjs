@@ -1,5 +1,7 @@
 "use client";
 import { useProducts } from "@/app/hooks/useProducts";
+import UpdateButton from "@/app/products/pdateButton";
+import DeleteButton from "./DeleteButton";
 export default function ProductPage() {
   const fallbackImage = "https://via.placeholder.com/150";
   const { data, isLoading, error, isError } = useProducts();
@@ -47,6 +49,8 @@ export default function ProductPage() {
           </button>
         </div>
       ))}
+      <UpdateButton />
+      <DeleteButton />
     </div>
   );
 }
