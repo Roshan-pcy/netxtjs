@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addFunction } from "@/lib/api/addproduct";
 import type { product } from "@/types/product";
+import CounterUi from "@/components/CounterUI";
 
 export default function PostProductPage() {
   const [title, setTitle] = useState("");
@@ -50,6 +51,8 @@ export default function PostProductPage() {
 
         <button type="submit">Add Product</button>
       </form>
+
+      <CounterUi />
     </>
   );
 }
